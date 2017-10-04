@@ -11,7 +11,7 @@ class DownloadsController < ApplicationController
     elsif params[:option].nil?
       redirect_to root_url, alert: "Option can't be blank."
     else
-      options = { output: '%(title)s.%(ext)s', extract_audio: false }
+      options = { output: '%(title)s.%(ext)s' }
 
       if params[:option] == "audio"
         options[:extract_audio] = true
@@ -19,8 +19,7 @@ class DownloadsController < ApplicationController
       end
 
       video = YoutubeDL.download params[:url], options
-      # render plain: "#{Rails.root}/#{rename(video.filename, options[:extract_audio])}"
-      send_file "#{Rails.root}/#{rename(video.filename, options[:extract_audio])}"
+      send_file rename(video.filename, options[:extract_audio])
     end
   end
 
@@ -31,9 +30,8 @@ class DownloadsController < ApplicationController
     ext = audio ? '.mp3' : '.mp4'
 
     file = filename + ext
-    parsed_filename = file.gsub(/ /,"\\ ")
-    File.rename parsed_filename, file.gsub(/ /,"-")
-    file.gsub(/ /,"-")
+    File.rename Rails.root+file, Rails.root+file.gsub(/ /,"-")
+    "#{Rails.root}/#{file.gsub(/ /,"-")}"
   end
 
 end
