@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Youtube Downloader</title>
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag 'favicon.png' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+
+  <body>
+    <% if alert %>
+      <script> Materialize.toast('<%= alert %>', 4000) </script>
+    <% end %>
+
+    <nav>
+      <div class="nav-wrapper container">
+        
+        <a class="brand-logo"><%= image_tag 'youtube.svg' %> <span>Youtube Downloader</span>     </a>
+        <a data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a target="_blank" href="https://github.com/emmanuelsw">Emmanuel Deossa</a></li>
+          <li><a target="_blank" href="#">About me</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li><a target="_blank" href="https://github.com/emmanuelsw">Emmanuel Deossa</a></li>
+          <li><a target="_blank" href="#">About me</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container top-space">
+      <%= yield %>
+    </div>
+
+  </body>
+</html>
