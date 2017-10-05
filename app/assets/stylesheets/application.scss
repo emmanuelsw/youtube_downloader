@@ -15,7 +15,7 @@
 */
 
 @import "materialize";
-@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
 
 body {
 	background-color: #fcfcfc;
@@ -89,6 +89,10 @@ button[type=submit] {
 
 input[type=url]:not(.browser-default):focus:not([readonly]) + label {
 	color: rgba(0, 0, 0, 0.87);
+}
+
+.btn-large i {
+	font-size: 1.3rem;
 }
 
 @media (max-width: 565px) {
