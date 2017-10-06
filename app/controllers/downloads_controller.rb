@@ -18,20 +18,8 @@ class DownloadsController < ApplicationController
         options[:audio_format] = 'mp3'
       end
 
-      video = YoutubeDL.download params[:url], options
-      send_file rename(video.filename, options[:extract_audio])
+      DownloaderJob.perform_later(params[:url], options)
     end
-  end
-
-  private
-  def rename(filename, audio)
-    ext = File.extname filename 
-    filename = File.basename filename, ext
-    ext = audio ? '.mp3' : '.mp4'
-
-    file = filename + ext
-    File.rename Rails.root+file, Rails.root+file.gsub(/ /,"-")
-    "#{Rails.root}/#{file.gsub(/ /,"-")}"
   end
 
 end
