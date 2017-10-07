@@ -3,13 +3,24 @@ class DownloaderJob < ApplicationJob
 
   def perform(url, options)
     video = YoutubeDL.download url, options
+    file = parse_filename(video.filename, options)
+    File.rename Rails.root + file[0], file[1]
+  end
 
-    ext = File.extname video.filename 
-    filename = File.basename video.filename, ext
+  after_perform do |job|
+    url = job.arguments.first
+    filename = YoutubeDL::Runner.new(url, get_filename: true, output: '%(title)s.%(ext)s').run
+    file = parse_filename(filename, job.arguments.last)
+    puts file[1]
+  end
+
+  private
+  def parse_filename(filename, options)
+    ext = File.extname(filename)
+    filename = File.basename(filename, ext)
     ext = options[:extract_audio] ? '.mp3' : '.mp4'
-
     file = filename + ext
-    File.rename Rails.root+file, File.join(Rails.root, 'public', file.gsub(/ /,"-"))
+    [file, File.join(Rails.root, 'public', file.gsub(/ /,"-"))]
   end
 
 end

@@ -19,6 +19,7 @@ class DownloadsController < ApplicationController
       end
 
       DownloaderJob.perform_later(params[:url], options)
+      head :no_content
     end
   end
 
