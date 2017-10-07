@@ -11,7 +11,8 @@ class DownloaderJob < ApplicationJob
     url = job.arguments.first
     filename = YoutubeDL::Runner.new(url, get_filename: true, output: '%(title)s.%(ext)s').run
     file = parse_filename(filename, job.arguments.last)
-    puts file[1]
+    data = { url: file[1], status: 'finished' }
+    ActionCable.server.broadcast 'download_channel', data
   end
 
   private

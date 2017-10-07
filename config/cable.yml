@@ -1,8 +1,12 @@
 development:
-  adapter: async
+  adapter: redis
+  url: redis://localhost:6379/1
+  channel_prefix: youtube_downloader_development
 
 test:
-  adapter: async
+  adapter: redis
+  url: redis://localhost:6379/1
+  channel_prefix: youtube_downloader_test
 
 production:
   adapter: redis

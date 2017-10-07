@@ -1,8 +1,6 @@
 class DownloadsController < ApplicationController
 
   def index
-    puts Dir.pwd
-    puts Rails.root
   end
 
   def download

@@ -15,6 +15,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'materialize-sass', '~> 0.100.2'
+gem 'redis', '~> 3.3'
 gem 'sidekiq'
 gem 'youtube-dl.rb', git: 'https://github.com/emmanuelsw/youtube-dl.rb'
 # gem 'capistrano-rails', group: :development
