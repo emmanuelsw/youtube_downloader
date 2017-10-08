@@ -1,7 +1,7 @@
 class DownloaderJob < ApplicationJob
   queue_as :default
 
-  def perform(url, options)
+  def perform(url, current_user, options)
     video = YoutubeDL.download url, options
     file = parse_filename(video.filename, options)
     File.rename Rails.root + file[0], file[1]
@@ -12,7 +12,8 @@ class DownloaderJob < ApplicationJob
     filename = YoutubeDL::Runner.new(url, get_filename: true, output: '%(title)s.%(ext)s').run
     file = parse_filename(filename, job.arguments.last)
     data = { url: file[1], status: 'finished' }
-    ActionCable.server.broadcast 'download_channel', data
+    ActionCable.server.broadcast "download_#{job.arguments[1]}", data
+    puts "-------------------- #{job.arguments[1]} --------------------------"
   end
 
   private

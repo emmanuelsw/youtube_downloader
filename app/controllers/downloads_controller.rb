@@ -16,7 +16,7 @@ class DownloadsController < ApplicationController
         options[:audio_format] = 'mp3'
       end
 
-      DownloaderJob.perform_later(params[:url], options)
+      DownloaderJob.perform_later(params[:url], cookies[:yd_session], options)
       head :no_content
     end
   end
