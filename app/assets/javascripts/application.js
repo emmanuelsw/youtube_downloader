@@ -17,6 +17,7 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
+	Notification.requestPermission();
 	$(".button-collapse").sideNav();
 
 	$('#download-form').on('ajax:send', function(){

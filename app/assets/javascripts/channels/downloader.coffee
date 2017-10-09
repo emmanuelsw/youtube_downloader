@@ -11,4 +11,5 @@ App.downloader = App.cable.subscriptions.create "DownloaderChannel",
       $('#download-form button').addClass 'hidden'
       $('#download-form a').removeClass 'hidden'
       $('#download-form a').attr href: data.url
+      new Notification 'Youtube Downloader', body: '¡Your file is ready!'
 
