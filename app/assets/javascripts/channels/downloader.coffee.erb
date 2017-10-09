@@ -6,10 +6,12 @@ App.downloader = App.cable.subscriptions.create "DownloaderChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    console.log data
     if data.status == "finished"
       $('#download-form button').addClass 'hidden'
       $('#download-form a').removeClass 'hidden'
       $('#download-form a').attr href: data.url
-      new Notification 'Youtube Downloader', body: '¡Your file is ready!'
+      notification = new Notification 'Youtube Downloader', body: '¡Your file is ready!', icon: "<%= asset_path 'yt.png' %>"
+      notification.onclick = ->
+        window.focus()
+        @close()
 
