@@ -2,4 +2,4 @@
 
 Youtube MP3 & Video Downloader
 
-@emmanuelsw
+[@emmanuelsw](https://github.com/emmanuelsw)
