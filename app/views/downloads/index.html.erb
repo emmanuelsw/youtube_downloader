@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col s12">
-		<%= form_tag '/download', method: :post do %>
+		<%= form_tag '/download', remote: true, id: 'download-form' do %>
 
 			<div class="card z-depth-1">
 				<div class="card-content">
@@ -31,7 +31,12 @@
 				</div>
 			</div>
 
-			<%= button_tag 'Submit', class:'btn waves-effect waves-light btn-large', data: {disable_with: 'Processing... <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>'} %>
+			<button type="submit" class="btn waves-effect waves-light btn-large">
+				Submit <i class="fa fa-send"></i>
+			</button>
+			<a class="btn waves-effect waves-light green lighten-2 btn-large hidden" download>
+				Download <i class="fa fa-download"></i>
+			</a>
 
 		<% end %>
 	</div>

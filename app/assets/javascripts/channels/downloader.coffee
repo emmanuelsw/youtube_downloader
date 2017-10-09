@@ -7,4 +7,8 @@ App.downloader = App.cable.subscriptions.create "DownloaderChannel",
 
   received: (data) ->
     console.log data
-    # Called when there's incoming data on the websocket for this channel
+    if data.status == "finished"
+      $('#download-form button').addClass 'hidden'
+      $('#download-form a').removeClass 'hidden'
+      $('#download-form a').attr href: data.url
+

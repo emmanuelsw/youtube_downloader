@@ -82,9 +82,13 @@ input[type=url].invalid:not(.browser-default) {
 	transform: translateY(-17px) scale(0.8);
 }
 
-button[type=submit] {
+form a, form button{
 	width: 100%;
 	font-weight: 500;
+}
+
+.hidden {
+	display: none;
 }
 
 input[type=url]:not(.browser-default):focus:not([readonly]) + label {
@@ -93,6 +97,13 @@ input[type=url]:not(.browser-default):focus:not([readonly]) + label {
 
 .btn-large i {
 	font-size: 1.3rem;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 @media (max-width: 565px) {

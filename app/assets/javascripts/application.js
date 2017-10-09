@@ -18,4 +18,9 @@
 
 $(document).on('turbolinks:load', function() {
 	$(".button-collapse").sideNav();
+
+	$('#download-form').on('ajax:send', function(){
+    $('#download-form button').html('Processing... <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>').attr({disabled: true});
+	});
+
 })
