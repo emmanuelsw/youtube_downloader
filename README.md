@@ -2,4 +2,14 @@
 
 Youtube MP3 & Video Downloader
 
-[@emmanuelsw](https://github.com/emmanuelsw)
+* Rails 5.1
+* ActionCable
+* Capistrano
+* Sidekiq
+* Redis
+
+
+
+URL: [http://104.131.80.169](http://104.131.80.169)
+
+[emmanuelsw](https://github.com/emmanuelsw)
