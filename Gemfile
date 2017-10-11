@@ -35,7 +35,8 @@ group :development do
   gem 'capistrano', '~> 3.9', '>= 3.9.1'
   gem 'capistrano-rails', '~> 1.3'
   gem 'capistrano-passenger', '~> 0.2.0'
-  gem 'capistrano-rvm'  
+  gem 'capistrano-rvm'
+  gem 'capistrano-sidekiq', github: 'seuros/capistrano-sidekiq'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

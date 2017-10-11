@@ -47,5 +47,9 @@ set :rvm_ruby_version, '2.4.1'
 # require "capistrano/rails/migrations"
 # require "capistrano/passenger"
 
+require 'capistrano/sidekiq'
+require 'capistrano/sidekiq/monit'
+set :pty,  false
+
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
